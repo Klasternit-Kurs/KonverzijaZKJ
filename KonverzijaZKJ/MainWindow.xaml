@@ -1,0 +1,33 @@
+﻿<Window x:Class="KonverzijaZKJ.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KonverzijaZKJ"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+	<StackPanel>
+		<TextBox Text="{Binding Bla, Converter={StaticResource BezNule} ,UpdateSourceTrigger=PropertyChanged}" FontSize="24"/>
+		<TextBox Text="{Binding Test, Mode=OneWayToSource,Converter={StaticResource Konv} ,UpdateSourceTrigger=PropertyChanged}" FontSize="24"/>
+		<CheckBox IsChecked="{Binding Test, UpdateSourceTrigger=PropertyChanged}"/>
+		<DataGrid IsReadOnly="True" AutoGenerateColumns="False" Name="dg" FontSize="24" ColumnWidth="*">
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="Naziv" Binding="{Binding Naziv}"/>
+				<DataGridTemplateColumn Header="Moj check">
+					<DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<CheckBox HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="{Binding Test, UpdateSourceTrigger=PropertyChanged}"/>
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>
+				</DataGridTemplateColumn>
+				<DataGridTemplateColumn Header="Boja mozda?">
+					<DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<StackPanel Background="{Binding Test, Mode=OneWay, Converter={StaticResource BojaKon}}"/>
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>
+				</DataGridTemplateColumn>
+			</DataGrid.Columns>
+		</DataGrid>
+	</StackPanel>
+</Window>

@@ -1,0 +1,11 @@
+﻿<Application x:Class="KonverzijaZKJ.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:KonverzijaZKJ"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+		<local:StringToBool x:Key="Konv"/>
+		<local:BoolToColor x:Key="BojaKon"/>
+		<local:IntToString x:Key="BezNule"/>
+	</Application.Resources>
+</Application>
